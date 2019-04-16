@@ -1,0 +1,26 @@
+{
+  "rules": {
+    "no-console": 0,
+    "no-underscore-dangle": 0,
+    "no-unused-vars": ["error", { "argsIgnorePattern": "(res|req|next)" }],
+    "no-use-before-define": ["error", { "variables": false }],
+    "no-multi-str": 0,
+    "max-len": ["error", 100, 2, {
+      "ignoreUrls": true,
+      "ignoreComments": true,
+      "ignoreRegExpLiterals": true,
+      "ignoreStrings": true,
+      "ignoreTemplateLiterals": true
+    }]
+  },
+  "env": {
+    "node": true
+  },
+  "parserOptions": {
+    "ecmaVersion": 8
+  },
+  "parser": "babel-eslint",
+  "extends": [
+    "airbnb-base"
+  ]
+}

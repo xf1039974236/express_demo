@@ -2,6 +2,7 @@ require('dotenv').config();
 
 const express = require('express');
 const bodyParser = require('body-parser');
+const cors = require('cors');
 const userRouter = require('./service/router/userRouter.js');
 const jokeRouter = require('./service/router/jokeRouter.js');
 
@@ -13,6 +14,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({
   extended: true,
 }));
+app.use(cors());
 
 const router = express.Router();
 router.get('/hello', (req, res, next) => {

@@ -3,6 +3,7 @@ require('dotenv').config();
 const express = require('express');
 const bodyParser = require('body-parser');
 const userRouter = require('./service/router/userRouter.js');
+const jokeRouter = require('./service/router/jokeRouter.js');
 
 const { PORT } = process.env;
 
@@ -19,6 +20,7 @@ router.get('/hello', (req, res, next) => {
 });
 app.use('/w', router);
 app.use('/user', userRouter);
+app.use('/joke', jokeRouter);
 
 app.listen(3000, () => {
   console.log(`> Ready on http://localhost:${PORT}`);

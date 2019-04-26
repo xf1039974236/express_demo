@@ -1,0 +1,30 @@
+{
+  "name": "express_html",
+  "version": "1.0.0",
+  "description": "",
+  "scripts": {
+    "dev": "next",
+    "build": "next build",
+    "start": "next build -p 80",
+    "dev_e": "cross-env NODE_ENV=development node server.js",
+    "start_e": "cross-env NODE_ENV=production node server.js"
+  },
+  "dependencies": {
+    "@zeit/next-css": "^1.0.1",
+    "@zeit/next-sass": "^1.0.1",
+    "antd": "^3.16.5",
+    "axios": "^0.18.0",
+    "express": "^4.16.4",
+    "next": "^8.1.0",
+    "node-sass": "^4.11.0",
+    "react": "^16.8.6",
+    "react-dom": "^16.8.6"
+  },
+  "devDependencies": {
+    "@babel/plugin-proposal-decorators": "^7.4.0",
+    "babel-plugin-import": "^1.11.0",
+    "babel-plugin-inline-dotenv": "^1.3.1",
+    "babel-plugin-module-resolver": "^3.2.0",
+    "cross-env": "^5.2.0"
+  }
+}

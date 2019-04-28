@@ -6,8 +6,8 @@
     "dev": "next",
     "build": "next build",
     "start": "next build -p 80",
-    "dev_e": "cross-env NODE_ENV=development node server.js",
-    "start_e": "cross-env NODE_ENV=production node server.js"
+    "com_dev": "cross-env NODE_ENV=development node server.js",
+    "com_start": "cross-env NODE_ENV=production node server.js"
   },
   "dependencies": {
     "@zeit/next-css": "^1.0.1",
@@ -20,11 +20,13 @@
     "react": "^16.8.6",
     "react-dom": "^16.8.6"
   },
+ 
   "devDependencies": {
     "@babel/plugin-proposal-decorators": "^7.4.0",
     "babel-plugin-import": "^1.11.0",
     "babel-plugin-inline-dotenv": "^1.3.1",
     "babel-plugin-module-resolver": "^3.2.0",
-    "cross-env": "^5.2.0"
+    "cross-env": "^5.2.0",
+    "husky": "^2.1.0"
   }
 }

@@ -2,7 +2,7 @@
 import React , { Component } from "react";
 import { Layout, Icon , Row , Col } from 'antd';
 import { withRouter } from "next/router";
-import globalTitle from "../../../constants/global/header"
+import globalTitle from "../../../constants/public/header"
 
 const { Header} = Layout;
 

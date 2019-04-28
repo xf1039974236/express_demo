@@ -30,6 +30,7 @@ app.prepare()
         server.listen(3000, (err) => {
           if (err) throw err;
           console.log(`> Ready on http://localhost:${port}, cross-env: [${process.env.NODE_ENV}]`)
+          
         });
     })
     .catch((ex) => {

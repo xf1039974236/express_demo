@@ -1,3 +1,3 @@
 module.exports = {
-    "INDEX":"首页"
-}
+  INDEX: "首页"
+};

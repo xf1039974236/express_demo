@@ -1,0 +1,32 @@
+env:
+  node: true
+  es6: true
+  browser: true
+
+extends:
+  # https://github.com/yannickcr/eslint-plugin-react#configuration
+  - eslint:recommended
+  - plugin:react/recommended
+  # https://prettier.io/docs/en/eslint.html#why-not-both
+  - plugin:prettier/recommended
+  # https://www.npmjs.com/package/eslint-plugin-import
+  - plugin:import/errors
+  - plugin:import/warnings
+
+plugins:
+    - react
+
+parserOptions:
+  ecmaFeatures: 
+    jsx: true
+
+parser: babel-eslint
+
+rules:
+  no-console: warn
+  no-unused-vars: ["error", { "argsIgnorePattern": "(res|req|next)" }]
+  import/namespace: [2, { allowComputed: true }]
+
+settings:
+  import/resolver:
+    babel-module: {}

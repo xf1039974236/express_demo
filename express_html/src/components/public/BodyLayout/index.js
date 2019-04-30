@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { Layout } from "antd";
 import { withRouter } from "next/router";
+import PropTypes from "prop-types";
 
 import "./index.scss";
 const { Content } = Layout;
@@ -36,5 +37,8 @@ class BodyLayout extends Component {
     );
   }
 }
+BodyLayout.propTypes = {
+  children: PropTypes.object
+};
 
 export default withRouter(BodyLayout);

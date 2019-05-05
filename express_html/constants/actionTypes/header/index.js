@@ -1,1 +1,3 @@
 export const TOGGLE_COLLAPSED = "TOGGLE_COLLAPSED";
+export const SAGA_TEST = "SAGA_TEST";
+export const SAGA_TEST_PAGE = "SAGA_TEST_PAGE";

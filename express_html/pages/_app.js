@@ -4,7 +4,7 @@ import { Provider } from "react-redux";
 
 import withRedux from "next-redux-wrapper";
 import withReduxSaga from "next-redux-saga";
-import createStore from "../redux/store";
+import configureStore from "../redux/store";
 
 class MyApp extends App {
   static async getInitialProps({ Component, ctx }) {
@@ -29,4 +29,4 @@ class MyApp extends App {
   }
 }
 
-export default withRedux(createStore)(MyApp);
+export default withRedux(configureStore)(withReduxSaga(MyApp));

@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import React, { Component } from "react";
 import { Layout, Icon, Row, Col } from "antd";
 import { withRouter } from "next/router";
@@ -39,15 +40,23 @@ class BaseHeader extends Component {
   }
 }
 const mapStateToProps = state => {
+  console.log(state);
   return {
     collapsed: state.pheader.collapsed
   };
 };
-const mapDispatchToProps = dispatch => ({
-  toggle() {
-    dispatch(collapsedToggle());
-  }
-});
+const mapDispatchToProps = dispatch => {
+  return {
+    toggle: () => {
+      dispatch({ type: "TOGGLE_COLLAPSED" });
+    }
+  };
+};
+// const mapDispatchToProps = dispatch => ({
+//   toggle() {
+//     dispatch(collapsedToggle());
+//   }
+// });
 
 export default connect(
   mapStateToProps,

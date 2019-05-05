@@ -1,3 +1,4 @@
+/* eslint-disable no-fallthrough */
 import { TOGGLE_COLLAPSED } from "../../../constants/actionTypes/header";
 export const stateheader = {
   collapsed: false

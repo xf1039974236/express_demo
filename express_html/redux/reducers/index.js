@@ -1,5 +1,6 @@
 import { combineReducers } from "redux";
 import pheader from "./pheader/header";
 import sagatest from "./test";
+import userList from "./userList";
 
-export default combineReducers({ pheader, sagatest });
+export default combineReducers({ pheader, sagatest, userList });

@@ -24,6 +24,6 @@ app.use('/w', router);
 app.use('/user', userRouter);
 app.use('/joke', jokeRouter);
 
-app.listen(3000, () => {
+app.listen(8000, () => {
   console.log(`> Ready on http://localhost:${PORT}`);
 });

@@ -4,18 +4,18 @@ const User = require('../../models/user');
 
 const router = express.Router();
 const userController = new UserController({ User });
-
+// 获取用户列表
 router.route('/userList')
   .get(async (req, res, next) => {
     try {
-      console.log('in router');
-      const users = await userController.getUser();
+      const { page, pageSize } = req.query;
+      const users = await userController.getUser(page, pageSize);
       res.json(users);
     } catch (error) {
       next('error');
     }
   });
-
+// 存入新用户
 router.route('/')
   .post(async (req, res, next) => {
     try {

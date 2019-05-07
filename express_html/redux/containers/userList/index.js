@@ -3,15 +3,17 @@ import UserListPage from "../../../src/components/userList";
 
 const mapStateToProps = state => {
   return {
-    userListTab: state.userList.userListTab
+    userListTab: state.userList.userListTab,
+    loading: state.userList.loading
   };
 };
 
 const mapDispatchToProps = dispatch => {
   return {
-    getUserList: () => {
+    getUserList: params => {
       dispatch({
-        type: "FETCH_USER_LIST"
+        type: "FETCH_USER_LIST",
+        payload: params
       });
     }
   };

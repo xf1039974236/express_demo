@@ -8,14 +8,17 @@ import {
   select
 } from "redux-saga/effects";
 
-import { GET_USER_LIST } from "../../constants/actionTypes/index";
+import {
+  GET_USER_LIST,
+  UserlistLoading
+} from "../../constants/actionTypes/index";
 import { getUserList } from "../../services/api/index";
 
 function* getUserListProps() {
   while (true) {
     const action = yield take("FETCH_USER_LIST");
     try {
-      yield put({ type: "UserlistLoading", loading: true });
+      yield put({ type: UserlistLoading, loading: true });
       let res = yield call(getUserList, action.payload);
       yield put({
         type: GET_USER_LIST,

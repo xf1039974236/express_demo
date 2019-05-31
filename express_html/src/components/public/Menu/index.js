@@ -8,10 +8,33 @@ const { Sider } = Layout;
 
 class BaseMenu extends Component {
   render() {
+    const { collapsed } = this.props;
     return (
       <Sider trigger={null} collapsible collapsed={this.props.collapsed}>
-        <div className="logo">
-          <p style={{ color: "#fff" }}>logo</p>
+        <div className="logo" style={{ textAlign: "center" }}>
+          <a href="/">
+            <img
+              src="/static/favicon.png"
+              style={{
+                width: "50px",
+                display: "inline-block",
+                verticalAlign: "middle"
+              }}
+            />
+            <h2
+              style={{
+                display: collapsed ? "none" : "inline-block",
+                verticalAlign: "middle",
+                lineHeight: "50px",
+                margin: "0 0 0 4px",
+                fontSize: "16px",
+                fontWeight: "400",
+                color: "#fff"
+              }}
+            >
+              微信小程序后台
+            </h2>
+          </a>
         </div>
         <Menu
           theme="dark"
@@ -21,7 +44,7 @@ class BaseMenu extends Component {
         >
           <Menu.Item key="1">
             <Icon type="user" />
-            <span>nav 1</span>
+            <span>用户列表页</span>
           </Menu.Item>
           <Menu.Item key="2">
             <Icon type="video-camera" />

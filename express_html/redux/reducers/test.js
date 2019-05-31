@@ -6,7 +6,7 @@ export const test = {
 const sagatest = (state = test, action = {}) => {
   switch (action.type) {
     case SAGA_TEST_PAGE:
-      console.log(action.data, "aaaaAAA");
+      console.log(action.data, "saga-test-fuyanran");
     default:
       return state;
   }

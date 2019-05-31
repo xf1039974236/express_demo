@@ -1,12 +1,18 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
 import './App.css';
-import axios from "axios";
+import axios from 'axios'
+import './mock/toList'
+const crypto = require('crypto');
 
 class App extends Component {
   state = {
-    listArr:[]
+    listArr:[],
+    dataSource:[]
   };
+  //MD5生成法则
+  createHashFun = (str)=>{
+    return crypto.createHash('md5').update(str,'UTF8').digest('hex');
+  }
 
   getListFun = ()=>{
     axios.get("http://localhost:8000/user/userList",{
@@ -23,10 +29,23 @@ class App extends Component {
     })
   }
   componentDidMount(){
-    this.getListFun()
+    const that = this;  
+    axios.get('http://20181024Mock.com/mode1/tableDataOne').then((res) => {
+        if(res.status === 200){
+            that.setState({
+                dataSource: res.data.dataSource
+            })
+        }
+    })
+    
+    //this.getListFun();
+    //test crypto 
+    const hs = this.createHashFun('fuyanran') 
+    console.log(hs,'---md5---');
   }
 
   render() {
+    console.log(this.state.dataSource);
     let listArr = this.state.listArr;
     return (
       <div>

@@ -49,29 +49,6 @@ class UserListPage extends Component {
     };
     this.props.getUserList(params);
   };
-  // fetch = (params = {}) => {
-  //   this.setState({ loading: true });
-  //   reqwest({
-  //     url: "https://randomuser.me/api",
-  //     method: "get",
-  //     data: {
-  //       results: this.state.pagination.pageSize,
-  //       ...params
-  //     },
-  //     type: "json"
-  //   }).then(data => {
-  //     const pagination = { ...this.state.pagination };
-  //     // Read total count from server
-  //     // pagination.total = data.totalCount;
-  //     pagination.total = 200;
-  //     console.log(data, "data");
-  //     this.setState({
-  //       loading: false,
-  //       data: data.results,
-  //       pagination
-  //     });
-  //   });
-  // };
 
   componentDidMount() {
     const params = {
@@ -84,7 +61,7 @@ class UserListPage extends Component {
   render() {
     let pagination = this.state.pagination;
     pagination.total = this.props.userListTab.total;
-    console.log(pagination);
+
     const data = this.props.userListTab.users,
       loading = this.props.loading;
     return (

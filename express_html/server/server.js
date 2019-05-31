@@ -35,5 +35,5 @@ app
     });
   })
   .catch(ex => {
-    process.exit(1);
+    process.exit(ex, 11111);
   });

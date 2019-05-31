@@ -1,5 +1,5 @@
 /* eslint-disable no-fallthrough */
-import { GET_USER_LIST } from "../../../constants/actionTypes";
+import { GET_USER_LIST, UserlistLoading } from "../../../constants/actionTypes";
 export const initialState = {
   userListTab: [],
   loading: false
@@ -11,7 +11,7 @@ const userList = (state = initialState, action = {}) => {
         userListTab: action.data,
         loading: action.loading
       });
-    case "UserlistLoading":
+    case UserlistLoading:
       return Object.assign({}, state, {
         loading: action.loading
       });

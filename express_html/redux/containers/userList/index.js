@@ -15,6 +15,12 @@ const mapDispatchToProps = dispatch => {
         type: "FETCH_USER_LIST",
         payload: params
       });
+    },
+    saveUserList: params => {
+      dispatch({
+        type: "TAKE_SAVE_USER",
+        payload: params
+      });
     }
   };
 };

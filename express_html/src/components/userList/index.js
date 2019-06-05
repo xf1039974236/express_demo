@@ -1,13 +1,16 @@
 /* eslint-disable react/prop-types */
 import React, { Component } from "react";
 import { withRouter } from "next/router";
-import { Table } from "antd";
+import { Table , Modal , Button , Form ,Input ,message , Card} from "antd";
 
+import './index.scss';
+
+const FormItem = Form.Item;
 const columns = [
   {
     title: "用户名",
-    dataIndex: "name",
-    render: name => name,
+    dataIndex: "username",
+    render: username => username,
     width: "20%"
   },
   {
@@ -29,14 +32,65 @@ const columns = [
     dataIndex: "updatedAt"
   }
 ];
+const CreateForm = Form.create()(props => {
+  const { createFormVisible, form, handleAdd, handleCreateVisible } = props;
+  const okHandle = () => {
+    form.validateFields((err, fieldsValue) => {
+      if (err) return;
+      form.resetFields();
+      handleAdd(fieldsValue);
+    });
+  };
+  return (
+    <Modal
+      destroyOnClose
+      title="新增用户"
+      visible={createFormVisible}
+      onOk={okHandle}
+      onCancel={() => handleCreateVisible()}
+    >
+      <FormItem labelCol={{ span: 5 }} wrapperCol={{ span: 15 }} label="用户名">
+        {form.getFieldDecorator('username', {
+          rules: [{ required: true, message: '用户名最少两字符！', min: 2}],
+        })(<Input placeholder="请输入" />)}
+      </FormItem>
+    </Modal>
+  );
+});
 
 class UserListPage extends Component {
   state = {
     pagination: {
       current: 1,
       pageSize: 5
-    }
+    },
+    createFormVisible: false
+
   };
+  //新增按钮
+  handleCreateVisible = flag =>{
+    this.setState({
+      createFormVisible: !!flag
+    })
+  }
+  handleAdd = fields => {
+    let params= Object.assign(fields,{picture:'baidu.com'})
+    this.props.saveUserList(params);
+    const pagination = {...this.state.pagination};
+    pagination.current =1;
+    this.setState({
+      pagination
+    });
+    const pageParams = {
+      page:1,
+      pageSize:this.state.pagination.pageSize
+    }
+    this.props.getUserList(pageParams);
+
+    message.success('添加成功');
+    this.handleCreateVisible();
+  };
+
   handleTableChange = pagination => {
     const pager = { ...this.state.pagination };
     pager.current = pagination.current;
@@ -64,8 +118,18 @@ class UserListPage extends Component {
 
     const data = this.props.userListTab.users,
       loading = this.props.loading;
+    const {createFormVisible} = this.state;
+    const createFMethods ={
+      handleAdd:this.handleAdd,
+      handleCreateVisible: this.handleCreateVisible,
+    }
     return (
       <div>
+        <div className ='searchTopBox'>
+          <Button type="primary" icon="plus" onClick={() => this.handleCreateVisible(true)}>
+            新建
+          </Button>
+        </div>
         <Table
           columns={columns}
           rowKey={record => record._id}
@@ -74,6 +138,8 @@ class UserListPage extends Component {
           loading={loading}
           onChange={this.handleTableChange}
         />
+
+      <CreateForm {...createFMethods} createFormVisible={createFormVisible} />
       </div>
     );
   }

@@ -19,7 +19,7 @@ router.route('/userList')
 router.route('/')
   .post(async (req, res, next) => {
     try {
-      console.log(req.body);
+      console.log(req.body,'===----111----1');
       const { username, picture } = req.body;
       const user = await userController.saveUser(username, picture);
       res.json(user);

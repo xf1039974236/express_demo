@@ -7,6 +7,7 @@ if (typeof require !== "undefined") {
 }
 
 module.exports = {
+  distDir: "dist",
   webpack(config, ...args) {
     config = withCss().webpack(config, ...args);
     config = withSass().webpack(config, ...args);

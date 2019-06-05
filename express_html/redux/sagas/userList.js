@@ -10,9 +10,11 @@ import {
 
 import {
   GET_USER_LIST,
-  UserlistLoading
+  UserlistLoading,
+  TAKE_SAVE_USER
 } from "../../constants/actionTypes/index";
-import { getUserList } from "../../services/api/index";
+import { getUserList , saveUserFun } from "../../services/api/index";
+
 
 function* getUserListProps() {
   while (true) {
@@ -29,24 +31,23 @@ function* getUserListProps() {
       console.log(err, "报错");
     }
   }
-  //   while (true) {
-  //     console.log(11111);
-  //     const action = yield take("*");
-  //     const state = yield select();
-  //     console.log("action1111", action);
-  //     console.log("state after2222", state);
-  //   }
-  //   for (let i = 0; i < 3; i++) {
-  //     const action = yield take("*");
-  //     console.log("nnnn1231213", action);
-  //   }
-  //   yield put({
-  //     type: GET_USER_LIST,
-  //     data: res
-  //   });
 }
+
 // function* getUserListsaga() {
 //   yield takeLatest("FETCH_USER_LIST", getUserListProps);
 // }
+function *saveUserProps(){
+  while (true){
+    const action = yield take(TAKE_SAVE_USER);
+    try{
+      let res = yield call ( saveUserFun , action.payload);
+    } catch(err){
+    }
 
-export default [fork(getUserListProps)];
+  }
+}
+
+export default [
+  fork(getUserListProps), 
+  fork(saveUserProps)
+];

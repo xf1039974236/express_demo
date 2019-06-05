@@ -3,6 +3,7 @@
 .next/
 .env*
 dist/
+build/
 
 .vscode/
 package-lock.json

@@ -1,8 +1,9 @@
 import React, { Component } from "react";
-import { Layout } from "antd";
+import { Layout , LocaleProvider } from "antd";
 import { withRouter } from "next/router";
 import Head from "next/head";
 import PropTypes from "prop-types";
+import zh_CN from 'antd/lib/locale-provider/zh_CN';
 
 import "./index.scss";
 const { Content } = Layout;
@@ -18,6 +19,7 @@ class BodyLayout extends Component {
   render() {
     // eslint-disable-next-line react/prop-types
     const { router } = this.props;
+    console.log(router.pathname.slice(1) , "----dfdfd----" );
     let pathkeys =
       router.pathname.slice(1) === ""
         ? "index"
@@ -25,14 +27,10 @@ class BodyLayout extends Component {
     const title = globalTitle[pathkeys.toUpperCase()] || "unknow path";
 
     return (
+      <LocaleProvider locale={zh_CN}>
       <Layout hasSider={hasSider}>
         <Head>
           <title>{title}</title>
-          <link
-            rel="shortcut icon"
-            href="/static/favicon.png"
-            type="image/png"
-          />
         </Head>
         <BaseMenu />
         <Layout>
@@ -51,6 +49,7 @@ class BodyLayout extends Component {
           <BaseFooter />
         </Layout>
       </Layout>
+      </LocaleProvider>
     );
   }
 }

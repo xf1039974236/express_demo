@@ -1,11 +1,14 @@
+/* eslint-disable no-undef */
 require("dotenv").config();
 const express = require("express");
 const next = require("next");
 const port = parseInt(process.env.PORT, 10) || 3000;
+
 const dev = process.env.NODE_ENV !== "production";
 const app = next({ dev });
 const handle = app.getRequestHandler();
 global.fetch = require("node-fetch");
+
 app
   .prepare()
   .then(() => {
@@ -22,6 +25,7 @@ app
     // });
 
     server.get("*", (req, res) => {
+      console.log(req.params,'----fufufuuf---');
       return handle(req, res);
     });
 

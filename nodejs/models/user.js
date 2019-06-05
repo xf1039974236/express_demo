@@ -9,6 +9,15 @@ const UserSchema = new Schema({
   picture: {
     type: String,
   },
+  email: {
+    type: String,
+  },
+  createdAt: {
+    type: String,
+  },
+  updatedAt: {
+    type: String,
+  },
 });
 
 module.exports = mongoose.model('users', UserSchema);

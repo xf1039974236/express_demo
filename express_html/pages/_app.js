@@ -6,6 +6,12 @@ import withRedux from "next-redux-wrapper";
 import withReduxSaga from "next-redux-saga";
 import configureStore from "../redux/store";
 
+import Router from "next/router";
+import NProgress from "nprogress";
+Router.events.on("routeChangeStart", () => NProgress.start());
+Router.events.on("routeChangeComplete", () => NProgress.done());
+Router.events.on("routeChangeError", () => NProgress.done());
+
 class MyApp extends App {
   static async getInitialProps({ Component, ctx }) {
     let pageProps = {};

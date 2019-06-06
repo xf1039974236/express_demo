@@ -7,6 +7,7 @@ const userRouter = require('./service/router/userRouter.js');
 const jokeRouter = require('./service/router/jokeRouter.js');
 
 const { PORT } = process.env;
+const port = parseInt(PORT, 10) || 8001;
 
 const app = express();
 
@@ -24,6 +25,6 @@ app.use('/w', router);
 app.use('/user', userRouter);
 app.use('/joke', jokeRouter);
 
-app.listen(8000, () => {
-  console.log(`> Ready on http://localhost:${PORT}`);
+app.listen(port, () => {
+  console.log(`> Ready on http://localhost:${port}`);
 });

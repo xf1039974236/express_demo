@@ -1,5 +1,5 @@
 import { connect } from "react-redux";
-import UserListPage from "../../../src/components/userList";
+import UserListPage from "../../../src/components/UserList";
 
 const mapStateToProps = state => {
   return {

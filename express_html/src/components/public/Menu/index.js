@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import React, { Component } from "react";
 import { Layout, Menu, Icon } from "antd";
 import { withRouter } from "next/router";
@@ -10,11 +11,11 @@ const { Sider } = Layout;
 class BaseMenu extends Component {
   componentDidMount() {
     const { router } = this.props;
-    router.prefetch('/');
-    router.prefetch('/user');
+    router.prefetch("/");
+    router.prefetch("/user");
   }
   render() {
-    const { collapsed ,router } = this.props;
+    const { collapsed, router } = this.props;
     return (
       <Sider trigger={null} collapsible collapsed={this.props.collapsed}>
         <div className="logo" style={{ textAlign: "center" }}>
@@ -49,17 +50,17 @@ class BaseMenu extends Component {
           style={{ overflow: "auto", height: "100vh" }}
         >
           <Menu.Item key="index">
-              <a onClick={() => setTimeout(() => router.push('/'), 100)}>
-                <Icon type="user" />
-                <span>用户列表页</span>
-              </a>
+            <a onClick={() => setTimeout(() => router.push("/"), 100)}>
+              <Icon type="user" />
+              <span>用户列表页</span>
+            </a>
           </Menu.Item>
           <Menu.Item key="user">
             {/* <Link> */}
-              <a onClick={() => setTimeout(() => router.push('/user'), 100)}>
-                <Icon type="user" />
-                <span>用户列表页</span>
-              </a>
+            <a onClick={() => setTimeout(() => router.push("/user"), 100)}>
+              <Icon type="user" />
+              <span>用户列表页</span>
+            </a>
           </Menu.Item>
           <Menu.Item key="3">
             <Icon type="upload" />

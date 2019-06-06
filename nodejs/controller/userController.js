@@ -22,16 +22,17 @@ class UserController {
 
   async saveUser(username, picture) {
     try {
+      console.log(picture);
       const picturelo = 'https://pic1.zhimg.com/v2-113913993a860c3517eae5324d9397b5_1200x500.jpg';
       const email = 'email default';
       const nowTime = new Date();
-      const yearTime = nowTime.toLocaleString();
+
       const user = new this.User({
         username,
         picture: picturelo,
         email,
-        createdAt: yearTime,
-        updatedAt: yearTime,
+        createdAt: nowTime,
+        updatedAt: nowTime,
       });
       await user.save();
       return user;

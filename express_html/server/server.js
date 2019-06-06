@@ -18,18 +18,21 @@ app
       return handler(req, res);
     });
 
-    // server.get('/filter/:id', (req, res) => {
-    //   const actualPage = '/index/editorFilter';
-    //   const queryParams = { id: req.params.id };
-    //   app.render(req, res, actualPage, queryParams);
-    // });
-
     server.get("*", (req, res) => {
-      console.log(req.params,'----fufufuuf---');
+      // const page = req.query.page;
+      // const pageArr = ["/index" , "/user"];
+      // const inor = pageArr.indexOf(page);
+      // if(inor){
+      //   return handle(req, res);
+      // }
       return handle(req, res);
     });
+    // server.get("/userind", (req, res) => {
+    //   const actualPage = "/user";
+    //   app.render(req, res, actualPage);
+    // });
 
-    server.listen(3000, err => {
+    server.listen(port, err => {
       if (err) throw err;
       console.log(
         `> Ready on http://localhost:${port}, cross-env: [${
